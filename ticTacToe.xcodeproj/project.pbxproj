@@ -13,13 +13,21 @@
 		D00F13151AD721E100308C9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D00F13141AD721E100308C9A /* Images.xcassets */; };
 		D00F13181AD721E100308C9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00F13161AD721E100308C9A /* LaunchScreen.xib */; };
 		D00F13241AD721E100308C9A /* ticTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F13231AD721E100308C9A /* ticTacToeTests.swift */; };
-		D00F132E1AD7253D00308C9A /* Grid.png in Resources */ = {isa = PBXBuildFile; fileRef = D00F132D1AD7253D00308C9A /* Grid.png */; };
-		D00F13301AD7254600308C9A /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00F132F1AD7254600308C9A /* x.png */; };
-		D00F13321AD7254C00308C9A /* o.png in Resources */ = {isa = PBXBuildFile; fileRef = D00F13311AD7254C00308C9A /* o.png */; };
 		D00F13341AD726CD00308C9A /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D00F13331AD726CD00308C9A /* button.png */; };
 		D00F13361AD7284700308C9A /* gamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F13351AD7284700308C9A /* gamePlayViewController.swift */; };
 		D00F13381AD729AA00308C9A /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F13371AD729AA00308C9A /* settingsViewController.swift */; };
 		D00F133A1AD729D300308C9A /* historyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F13391AD729D300308C9A /* historyViewController.swift */; };
+		D06C41341AE0967700B51093 /* gridClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C41331AE0967700B51093 /* gridClass.swift */; };
+		D06C41381AE2A51F00B51093 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41371AE2A51F00B51093 /* line.png */; };
+		D06C413C1AE2A7F600B51093 /* grid3.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C413B1AE2A7F600B51093 /* grid3.png */; };
+		D06C41401AE2A8F400B51093 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C413F1AE2A8F400B51093 /* x.png */; };
+		D06C41421AE2A97100B51093 /* o.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41411AE2A97100B51093 /* o.png */; };
+		D06C41461AE2AB2400B51093 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41451AE2AB2400B51093 /* settingsIcon.png */; };
+		D06C41481AE2ABE800B51093 /* historyIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41471AE2ABE800B51093 /* historyIcon.png */; };
+		D06C414E1AE2AD9400B51093 /* gridIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C414D1AE2AD9400B51093 /* gridIcon.png */; };
+		D06C41541AE2AFA300B51093 /* grid4.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41531AE2AFA300B51093 /* grid4.png */; };
+		D06C41561AE2B05900B51093 /* grid5.png in Resources */ = {isa = PBXBuildFile; fileRef = D06C41551AE2B05900B51093 /* grid5.png */; };
+		D06C41581AE2B1C300B51093 /* gridsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = D06C41571AE2B1C300B51093 /* gridsList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +51,21 @@
 		D00F131D1AD721E100308C9A /* ticTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ticTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00F13221AD721E100308C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D00F13231AD721E100308C9A /* ticTacToeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticTacToeTests.swift; sourceTree = "<group>"; };
-		D00F132D1AD7253D00308C9A /* Grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid.png; sourceTree = "<group>"; };
-		D00F132F1AD7254600308C9A /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
-		D00F13311AD7254C00308C9A /* o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = o.png; path = ../o.png; sourceTree = "<group>"; };
 		D00F13331AD726CD00308C9A /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D00F13351AD7284700308C9A /* gamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gamePlayViewController.swift; sourceTree = "<group>"; };
 		D00F13371AD729AA00308C9A /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		D00F13391AD729D300308C9A /* historyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = historyViewController.swift; sourceTree = "<group>"; };
+		D06C41331AE0967700B51093 /* gridClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gridClass.swift; sourceTree = "<group>"; };
+		D06C41371AE2A51F00B51093 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		D06C413B1AE2A7F600B51093 /* grid3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid3.png; sourceTree = "<group>"; };
+		D06C413F1AE2A8F400B51093 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		D06C41411AE2A97100B51093 /* o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = o.png; sourceTree = "<group>"; };
+		D06C41451AE2AB2400B51093 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		D06C41471AE2ABE800B51093 /* historyIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = historyIcon.png; sourceTree = "<group>"; };
+		D06C414D1AE2AD9400B51093 /* gridIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gridIcon.png; sourceTree = "<group>"; };
+		D06C41531AE2AFA300B51093 /* grid4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid4.png; sourceTree = "<group>"; };
+		D06C41551AE2B05900B51093 /* grid5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid5.png; sourceTree = "<group>"; };
+		D06C41571AE2B1C300B51093 /* gridsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = gridsList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +107,22 @@
 		D00F130A1AD721E100308C9A /* ticTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				D06C41571AE2B1C300B51093 /* gridsList.plist */,
+				D06C41551AE2B05900B51093 /* grid5.png */,
+				D06C41531AE2AFA300B51093 /* grid4.png */,
+				D06C414D1AE2AD9400B51093 /* gridIcon.png */,
+				D06C41471AE2ABE800B51093 /* historyIcon.png */,
+				D06C41451AE2AB2400B51093 /* settingsIcon.png */,
+				D06C41411AE2A97100B51093 /* o.png */,
+				D06C413F1AE2A8F400B51093 /* x.png */,
+				D06C413B1AE2A7F600B51093 /* grid3.png */,
+				D06C41371AE2A51F00B51093 /* line.png */,
+				D06C41331AE0967700B51093 /* gridClass.swift */,
 				D00F13391AD729D300308C9A /* historyViewController.swift */,
 				D00F13371AD729AA00308C9A /* settingsViewController.swift */,
 				D00F13351AD7284700308C9A /* gamePlayViewController.swift */,
-				D00F13311AD7254C00308C9A /* o.png */,
-				D00F132F1AD7254600308C9A /* x.png */,
 				D00F130D1AD721E100308C9A /* AppDelegate.swift */,
 				D00F130F1AD721E100308C9A /* ViewController.swift */,
-				D00F132D1AD7253D00308C9A /* Grid.png */,
 				D00F13111AD721E100308C9A /* Main.storyboard */,
 				D00F13141AD721E100308C9A /* Images.xcassets */,
 				D00F13331AD726CD00308C9A /* button.png */,
@@ -214,11 +238,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D00F13341AD726CD00308C9A /* button.png in Resources */,
+				D06C414E1AE2AD9400B51093 /* gridIcon.png in Resources */,
 				D00F13131AD721E100308C9A /* Main.storyboard in Resources */,
-				D00F132E1AD7253D00308C9A /* Grid.png in Resources */,
-				D00F13301AD7254600308C9A /* x.png in Resources */,
-				D00F13321AD7254C00308C9A /* o.png in Resources */,
+				D06C41381AE2A51F00B51093 /* line.png in Resources */,
+				D06C41421AE2A97100B51093 /* o.png in Resources */,
+				D06C41401AE2A8F400B51093 /* x.png in Resources */,
+				D06C41541AE2AFA300B51093 /* grid4.png in Resources */,
+				D06C41461AE2AB2400B51093 /* settingsIcon.png in Resources */,
+				D06C413C1AE2A7F600B51093 /* grid3.png in Resources */,
 				D00F13181AD721E100308C9A /* LaunchScreen.xib in Resources */,
+				D06C41581AE2B1C300B51093 /* gridsList.plist in Resources */,
+				D06C41561AE2B05900B51093 /* grid5.png in Resources */,
+				D06C41481AE2ABE800B51093 /* historyIcon.png in Resources */,
 				D00F13151AD721E100308C9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +272,7 @@
 				D00F130E1AD721E100308C9A /* AppDelegate.swift in Sources */,
 				D00F13361AD7284700308C9A /* gamePlayViewController.swift in Sources */,
 				D00F13381AD729AA00308C9A /* settingsViewController.swift in Sources */,
+				D06C41341AE0967700B51093 /* gridClass.swift in Sources */,
 				D00F133A1AD729D300308C9A /* historyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +465,7 @@
 				D00F13291AD721E100308C9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D00F132A1AD721E100308C9A /* Build configuration list for PBXNativeTarget "ticTacToeTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +474,7 @@
 				D00F132C1AD721E100308C9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
