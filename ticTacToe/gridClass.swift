@@ -55,10 +55,11 @@ class gridClass {
         var gridView = UIImageView(image: gridImage)
         
         gridView.frame = CGRect(x: 45, y: 200, width: 300, height: 300)
-        
+    
+        // Add the grid view to the view controller
         vc.view.addSubview(gridView)
         
-        createButton(vc, rows: rows, columns: columns, height: 105)
+        createButton(vc, rows: rows, columns: columns, height: 105) // Hard-coded value
         
     }
     
@@ -94,8 +95,11 @@ class gridClass {
     
     //inserting buttons
     func createButton(vc : UIViewController, rows : Int, columns : Int, height : Int){
-        var tempButton : UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+
+        // Make a temp button
+        var tempButton : UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         
+        // 
         buttons = [[UIButton]](count: gamePlayViewController.grid.rows, repeatedValue:[UIButton](count: gamePlayViewController.grid.columns, repeatedValue: tempButton))
         
         for var i = 0; i < gamePlayViewController.grid.rows; i++ {
@@ -108,7 +112,7 @@ class gridClass {
                 var size : Int = height
                 var size2 : CGFloat = CGFloat(height)
                 
-                var button : UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+                var button : UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
                     
                 var yValue:CGFloat = CGFloat(200 + (size * i))
                 var xValue:CGFloat = CGFloat(45 + (size * c))

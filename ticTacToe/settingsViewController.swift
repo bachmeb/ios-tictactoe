@@ -53,14 +53,14 @@ class settingsViewController: UIViewController {
     }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
-        var gridOptions = NSAttributedString(string: grids[row] as String, attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        var gridOptions = NSAttributedString(string: grids[row] as! String, attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         return gridOptions
     }
     
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var grid = gridPicker.selectedRowInComponent(0)
-        var gridSelected = grids.objectAtIndex(grid) as String
+        var gridSelected = grids.objectAtIndex(grid) as! String
         
         if(grid == 0){
             gamePlayViewController.grid.rows = 3
