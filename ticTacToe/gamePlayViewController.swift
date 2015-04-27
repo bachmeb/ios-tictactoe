@@ -22,7 +22,8 @@ class gamePlayViewController: UIViewController {
 
     @IBOutlet weak var playerLabel: UILabel!
     
-    struct grid {
+    //Structures are always copied when they are passed around in code, and do not use reference counting.
+    struct gridStruct {
         //needs to come from settings page
         static var columns : Int = 3
         static var rows : Int = 3
@@ -35,18 +36,40 @@ class gamePlayViewController: UIViewController {
     }
 
     //creates object of gridClass
-    let gridCreated = gridClass(rows: grid.rows, columns: grid.columns)
+    let gridObject = gridClass(rows: gridStruct.rows, columns: gridStruct.columns)
     
     //counter determines to input x or o
     var counter = 0
     var turnCounter : Int = 0
     
-
+    // How to set the orientation. The return value is not what we expect, Int not UInt so we cast.
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.All.rawValue)
+    }
+    
+    func makeLayout(){
+        //Make a view
+        let view1 = UIView()
+        
+        view1.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view1.backgroundColor = UIColor.redColor()
+        
+        //Make a second view
+        let view2 = UIView()
+        view2.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view2.backgroundColor = UIColor(red: 0.75, green: 0.75, blue: 0.1, alpha: 1.0)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gridCreated.createGrid(self)
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        //view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
+        makeLayout()
+        
+        gridObject.createGrid(self)
         
         //determines if player starts as X or O
         var playerType:Bool = settingsViewController.playerInfo.playerType
@@ -64,21 +87,21 @@ class gamePlayViewController: UIViewController {
         
         
         //determining size of images
-        if(grid.rows == 3){
+        if(gridStruct.rows == 3){
             
-            grid.pictureSize = 85
+            gridStruct.pictureSize = 85
             
-        } else if (grid.rows == 4){
+        } else if (gridStruct.rows == 4){
             
-            grid.pictureSize = 60
+            gridStruct.pictureSize = 60
             
-        } else if (grid.rows == 5){
+        } else if (gridStruct.rows == 5){
             
-            grid.pictureSize = 55
+            gridStruct.pictureSize = 55
             
         } else {
             
-            grid.pictureSize = 85
+            gridStruct.pictureSize = 85
             
         }
         
@@ -118,7 +141,7 @@ class gamePlayViewController: UIViewController {
         var xValue = sender.frame.origin.x
         var yValue = sender.frame.origin.y
         
-        if(grid.gameGrid[rowNum][columnNum] == 0){
+        if(gridStruct.gameGrid[rowNum][columnNum] == 0){
             createArray(columnNum, rowNum: rowNum, counter: counter)
            
             updateBox(xValue, yValue: yValue, counter: counter)
@@ -133,16 +156,16 @@ class gamePlayViewController: UIViewController {
         
             turnCounter++
         
-            var allowance : Int = grid.rows * grid.columns
+            var allowance : Int = gridStruct.rows * gridStruct.columns
             var compAllowance = allowance - 1
         
-            if ((turnCounter < compAllowance) && (settingsViewController.playerInfo.computerOn == true) && (grid.rows % 2 != 0)){
+            if ((turnCounter < compAllowance) && (settingsViewController.playerInfo.computerOn == true) && (gridStruct.rows % 2 != 0)){
                 
                 //disables touch until after computer goes
                 view.userInteractionEnabled = false
                 var timer = NSTimer.scheduledTimerWithTimeInterval(0.15, target: self, selector: Selector("computerPlay"), userInfo: nil, repeats: false)
             
-            } else if ((settingsViewController.playerInfo.computerOn == true) && (grid.rows % 2 == 0)){
+            } else if ((settingsViewController.playerInfo.computerOn == true) && (gridStruct.rows % 2 == 0)){
                 
                 //disables touch until after computer goes
                 view.userInteractionEnabled = false
@@ -165,8 +188,8 @@ class gamePlayViewController: UIViewController {
     
     //posts an image 
     func updateBox(xValue: CGFloat, yValue: CGFloat, counter: Int){
-        var width : CGFloat = CGFloat(grid.pictureSize)
-        var height : CGFloat = CGFloat(grid.pictureSize)
+        var width : CGFloat = CGFloat(gridStruct.pictureSize)
+        var height : CGFloat = CGFloat(gridStruct.pictureSize)
         
         if(counter%2 == 0){
 
@@ -178,7 +201,7 @@ class gamePlayViewController: UIViewController {
             imageView.frame = CGRect(x: xValue, y: yValue, width: width, height: height)
             view.addSubview(imageView)
             
-            imageData(grid.images, imageCounter: grid.imageCounter, imageView: imageView)
+            imageData(gridStruct.images, imageCounter: gridStruct.imageCounter, imageView: imageView)
             
         } else {
             var imageName = "x.png"
@@ -188,7 +211,7 @@ class gamePlayViewController: UIViewController {
             imageView.frame = CGRect(x: xValue, y: yValue, width: width, height: height)
             view.addSubview(imageView)
             
-            imageData(grid.images, imageCounter: grid.imageCounter, imageView: imageView)
+            imageData(gridStruct.images, imageCounter: gridStruct.imageCounter, imageView: imageView)
             
         }
     }
@@ -198,8 +221,8 @@ class gamePlayViewController: UIViewController {
     
     //builds the image data array
     func imageData(images: [UIImageView], imageCounter: Int, imageView: UIImageView ){
-        grid.images.append(imageView)
-        grid.imageCounter++
+        gridStruct.images.append(imageView)
+        gridStruct.imageCounter++
 
     }
     
@@ -210,16 +233,16 @@ class gamePlayViewController: UIViewController {
 
         //X
         if(counter % 2 == 0){
-            grid.gameGrid[rowNum][imageID] = 1
+            gridStruct.gameGrid[rowNum][imageID] = 1
 
         //O
         } else {
-           grid.gameGrid[rowNum][imageID] = 2
+           gridStruct.gameGrid[rowNum][imageID] = 2
             
         }
         
-        checkWinner(grid.gameGrid)
-        checkLose(grid.gameGrid)
+        checkWinner(gridStruct.gameGrid)
+        checkLose(gridStruct.gameGrid)
     }
     
     
@@ -229,21 +252,21 @@ class gamePlayViewController: UIViewController {
         var winnerCounter : Int
         
         //horizontal
-        for var i = 0; i < gridCreated.gridRows; i++ {
+        for var i = 0; i < gridObject.gridClassRows; i++ {
             
             winnerCounter = 0
             
-            for var c = 1; c < gridCreated.gridColumns; c++ {
+            for var c = 1; c < gridObject.gridClassColumns; c++ {
                 
-                if((grid.gameGrid[i][0] == grid.gameGrid[i][c])
-                    && grid.gameGrid[i][0] != 0
-                    && grid.gameGrid[i][c] != 0)
+                if((gridStruct.gameGrid[i][0] == gridStruct.gameGrid[i][c])
+                    && gridStruct.gameGrid[i][0] != 0
+                    && gridStruct.gameGrid[i][c] != 0)
                 {
                     winnerCounter++
                     
-                    if(winnerCounter == (gridCreated.gridRows - 1)) {
+                    if(winnerCounter == (gridObject.gridClassRows - 1)) {
                         alertWin()
-                        i = gridCreated.gridRows
+                        i = gridObject.gridClassRows
                     }
                 }
             }
@@ -251,21 +274,21 @@ class gamePlayViewController: UIViewController {
         
         
         //vertical
-        for var i = 0; i < gridCreated.gridColumns; i++ {
+        for var i = 0; i < gridObject.gridClassColumns; i++ {
             
             winnerCounter = 0
             
-            for var c = 1; c < gridCreated.gridRows; c++ {
+            for var c = 1; c < gridObject.gridClassRows; c++ {
                 
-                if((grid.gameGrid[0][i] == grid.gameGrid[c][i])
-                    && grid.gameGrid[0][i] != 0
-                    && grid.gameGrid[c][i] != 0)
+                if((gridStruct.gameGrid[0][i] == gridStruct.gameGrid[c][i])
+                    && gridStruct.gameGrid[0][i] != 0
+                    && gridStruct.gameGrid[c][i] != 0)
                 {
                     winnerCounter++
                     
-                    if(winnerCounter == (gridCreated.gridRows - 1)) {
+                    if(winnerCounter == (gridObject.gridClassRows - 1)) {
                         alertWin()
-                        i = gridCreated.gridRows
+                        i = gridObject.gridClassRows
                     }
                 }
                 
@@ -276,16 +299,16 @@ class gamePlayViewController: UIViewController {
         
         //diagonal
         winnerCounter = 0
-        for var c = 1; c < gridCreated.gridRows; c++ {
+        for var c = 1; c < gridObject.gridClassRows; c++ {
             
-            if((grid.gameGrid[0][0] == grid.gameGrid[c][c])
-                && grid.gameGrid[0][0] != 0
-                && grid.gameGrid[c][c] != 0)
+            if((gridStruct.gameGrid[0][0] == gridStruct.gameGrid[c][c])
+                && gridStruct.gameGrid[0][0] != 0
+                && gridStruct.gameGrid[c][c] != 0)
             {
                 winnerCounter++
-                if(winnerCounter == (gridCreated.gridRows - 1)) {
+                if(winnerCounter == (gridObject.gridClassRows - 1)) {
                     alertWin()
-                    c = gridCreated.gridRows
+                    c = gridObject.gridClassRows
                 }
             }
             
@@ -294,17 +317,17 @@ class gamePlayViewController: UIViewController {
         
         //backwards diagonal
         winnerCounter = 0
-        for var c = 2; c <= gridCreated.gridRows; c++ {
+        for var c = 2; c <= gridObject.gridClassRows; c++ {
             
-            if((grid.gameGrid[gridCreated.gridRows - 1][0] == grid.gameGrid[gridCreated.gridRows - c][c - 1])
-                && grid.gameGrid[gridCreated.gridRows - 1][0] != 0
-                && grid.gameGrid[gridCreated.gridRows - c][c - 1] != 0)
+            if((gridStruct.gameGrid[gridObject.gridClassRows - 1][0] == gridStruct.gameGrid[gridObject.gridClassRows - c][c - 1])
+                && gridStruct.gameGrid[gridObject.gridClassRows - 1][0] != 0
+                && gridStruct.gameGrid[gridObject.gridClassRows - c][c - 1] != 0)
             {
                 winnerCounter++
                 
-                if(winnerCounter == (gridCreated.gridRows - 1)) {
+                if(winnerCounter == (gridObject.gridClassRows - 1)) {
                     alertWin()
-                    c = gridCreated.gridRows
+                    c = gridObject.gridClassRows
                 }
             }
             
@@ -317,16 +340,16 @@ class gamePlayViewController: UIViewController {
         
         var loserCounter : Int = 0
         
-        for var i = 0; i < gridCreated.gridRows; i++ {
+        for var i = 0; i < gridObject.gridClassRows; i++ {
             
-            for var c = 0; c < gridCreated.gridColumns; c++ {
+            for var c = 0; c < gridObject.gridClassColumns; c++ {
                 
-                if(grid.gameGrid[i][c] != 0)
+                if(gridStruct.gameGrid[i][c] != 0)
                 {
                     loserCounter++
                 }
                 
-                if(loserCounter == (gridCreated.gridRows * gridCreated.gridColumns))
+                if(loserCounter == (gridObject.gridClassRows * gridObject.gridClassColumns))
                 {
                     var showWin = UIAlertController(title: "Loser", message: "No one wins!", preferredStyle: UIAlertControllerStyle.Alert)
                     showWin.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
@@ -341,7 +364,7 @@ class gamePlayViewController: UIViewController {
 
     //empties the grid array
     func emptyGameGrid() {
-        grid.gameGrid = [[Int]](count: gridCreated.gridColumns, repeatedValue:[Int](count: gridCreated.gridRows, repeatedValue: 0))
+        gridStruct.gameGrid = [[Int]](count: gridObject.gridClassColumns, repeatedValue:[Int](count: gridObject.gridClassRows, repeatedValue: 0))
     }
 
 
@@ -352,11 +375,11 @@ class gamePlayViewController: UIViewController {
         emptyGameGrid()
         turnCounter = 0
         
-        for var i = 0; i < grid.imageCounter; i++ {
-            grid.images[i].removeFromSuperview()
+        for var i = 0; i < gridStruct.imageCounter; i++ {
+            gridStruct.images[i].removeFromSuperview()
         }
         
-        gridCreated.createGrid(self)
+        gridObject.createGrid(self)
         
         
         if(counter % 2 == 0){
@@ -378,15 +401,15 @@ class gamePlayViewController: UIViewController {
     //functionality for computer to play
     func computerPlay(){
         
-        var row  = Int(arc4random_uniform(UInt32(grid.rows)))
-        var column = Int(arc4random_uniform(UInt32(grid.columns)))
+        var row  = Int(arc4random_uniform(UInt32(gridStruct.rows)))
+        var column = Int(arc4random_uniform(UInt32(gridStruct.columns)))
         
-        if(grid.gameGrid[row][column] == 1){
+        if(gridStruct.gameGrid[row][column] == 1){
 
             computerPlay()
             
             
-        } else if (grid.gameGrid[row][column] == 2){
+        } else if (gridStruct.gameGrid[row][column] == 2){
             
             computerPlay()
             
@@ -403,7 +426,7 @@ class gamePlayViewController: UIViewController {
     //checks the box the user clicked
     func checkComputerBox(row: Int, column: Int){
 
-        var buttonID = gridCreated.buttons[row][column]
+        var buttonID = gridObject.buttons[row][column]
     
         buttonID.enabled = false
         

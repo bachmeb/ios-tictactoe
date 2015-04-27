@@ -63,17 +63,17 @@ class settingsViewController: UIViewController {
         var gridSelected = grids.objectAtIndex(grid) as! String
         
         if(grid == 0){
-            gamePlayViewController.grid.rows = 3
-            gamePlayViewController.grid.columns = 3
+            gamePlayViewController.gridStruct.rows = 3
+            gamePlayViewController.gridStruct.columns = 3
         } else if (grid == 1){
-            gamePlayViewController.grid.rows = 4
-            gamePlayViewController.grid.columns = 4
+            gamePlayViewController.gridStruct.rows = 4
+            gamePlayViewController.gridStruct.columns = 4
         } else if (grid == 2){
-            gamePlayViewController.grid.rows = 5
-            gamePlayViewController.grid.columns = 5
+            gamePlayViewController.gridStruct.rows = 5
+            gamePlayViewController.gridStruct.columns = 5
         } else {
-            gamePlayViewController.grid.rows = 3
-            gamePlayViewController.grid.columns = 3
+            gamePlayViewController.gridStruct.rows = 3
+            gamePlayViewController.gridStruct.columns = 3
         }
         
         
